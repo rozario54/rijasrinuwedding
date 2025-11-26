@@ -6,183 +6,131 @@
   <title>Rinu & Rijas | Wedding Invitation</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
- 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-   
   <style>
-    :root {
-      --brown: white;
-      --cream: #f8f5f2;
+    :root{
+      --accent: #a66b3a;
+      --bg-cream: #f8f5f2;
+      --text-dark: #f6f0ed;
+      --muted: #6c5a4d;
+      --glass: rgba(255,255,255,0.6);
     }
 
+    /* Reset & base */
+    *{box-sizing:border-box}
+    html,body{height:100%;}
     body {
       font-family: 'Montserrat', sans-serif;
-      color: #3a2e27;
-      background-color: #fff;
+      color: var(--text-dark);
+      background: #fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
       scroll-behavior: smooth;
+      line-height:1.5;
     }
 
-    h1, h2, h3, h4 {
-      font-family: 'Playfair Display', serif;
-      color: var(--brown);
-    }
+    h1,h2,h3,h4{font-family:'Playfair Display',serif;color:var(--text-dark);}
 
-    /* Navbar */
-    .navbar {
-      background: beige;
+    /* ---------- NAVBAR ---------- */
+    .navbar{
+      background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.55));
       backdrop-filter: blur(6px);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 6px 18px rgba(38,30,21,0.06);
+      transition: all .35s ease;
     }
+    .navbar.scrolled{box-shadow:0 8px 26px rgba(38,30,21,0.12);backdrop-filter: blur(8px);}
+    .navbar-brand{color:var(--text-dark);font-weight:700}
+    .nav-link{color:var(--text-dark) !important;font-weight:500}
+    .nav-link:hover{color:var(--accent) !important;}
 
-    .nav-link {
-      color: #3a2e27 !important;
-      font-weight: 500;
-    }
+    /* make toggler icon visible on light background */
+    .navbar-toggler {border: none}
+    .navbar-toggler-icon{display:inline-block;width:28px;height:18px;position:relative}
+    .navbar-toggler-icon::before,.navbar-toggler-icon::after,.navbar-toggler-icon span{content:'';position:absolute;left:0;right:0;height:3px;background:var(--text-dark);border-radius:3px}
+    .navbar-toggler-icon::before{top:0}
+    .navbar-toggler-icon span{top:50%;transform:translateY(-50%)}
+    .navbar-toggler-icon::after{bottom:0}
 
-    .nav-link:hover {
-      color: red !important;
+    /* ---------- HERO COVER ---------- */
+    .hero-page{
+      position:relative;
+      background-image: url('./InShot_20251119_155501835.jpg');
+      background-size:cover;background-position:center;
+      min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden;
     }
+    /* separate overlay for hero and main hero */
+    .hero-page .overlay, .hero .overlay{position:absolute;inset:0}
+    .hero-page .overlay{background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.35));}
 
-    /* Hero Cover Page */
-    .hero-page {
-      position: relative;
-      background: url("./InShot_20251119_155501835.jpg") center/cover no-repeat;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #fff;
-    }
+    .hero-content{position:relative;z-index:2;padding:2rem;max-width:980px}
+    .hero-content h1{font-size:clamp(2rem,5vw,3.5rem);letter-spacing:3px;margin-bottom:.5rem}
+    .hero-content p{font-size:clamp(1rem,1.6vw,1.15rem);opacity:.95}
 
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.45);
-    }
+    .scroll-down{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font-size:1rem;color:#fff;text-decoration:none;z-index:5}
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      animation: fadeInUp 1.8s ease;
+    /* ---------- MAIN HERO (after cover) ---------- */
+    .hero{
+      position:relative;min-height:60vh;display:flex;align-items:center;justify-content:center;color:#fff;background-image:url('./InShot_20251119_155422114.jpg');background-size:cover;background-position:center;
     }
+    .hero .overlay{background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.15));}
+    .hero h2{font-size:clamp(1.6rem,4vw,2.8rem);letter-spacing:1.5px}
 
-    .hero-content h1 {
-      font-size: 3.5rem;
-      letter-spacing: 3px;
-    }
+    /* ---------- SECTIONS ---------- */
+    section{padding:4rem 0}
+    .story{background:var(--bg-cream)}
+    .details{background:#fffaf7}
 
-    .hero-content p {
-      font-size: 1.1rem;
-      letter-spacing: 1px;
-    }
+    .gallery img{width:100%;border-radius:12px;margin-bottom:1rem;display:block;transition:transform .45s cubic-bezier(.2,.9,.2,1),filter .35s}
+    .gallery .img-wrap{overflow:hidden;border-radius:12px}
+    .gallery img:hover{transform:scale(1.04)}
 
-    .scroll-down {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 1rem;
-      color: #fff;
-      animation: bounce 2s infinite;
-      text-decoration: none;
-    }
+    /* responsive iframe */
+    .map-responsive{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
+    .map-responsive iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
 
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
-      40% { transform: translate(-50%, -10px); }
-      60% { transform: translate(-50%, -5px); }
-    }
+    /* footer */
+    footer{background:var(--bg-cream);padding:2rem 0;text-align:center;color:var(--muted)}
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    /* ---------- ANIMATIONS ---------- */
+    .fade-up{opacity:0;transform:translateY(16px);transition:all .7s cubic-bezier(.2,.9,.2,1)}
+    .fade-up.visible{opacity:1;transform:translateY(0)}
 
-    /* Main Hero Section (after cover) */
-    .hero {
-      position: relative;
-      background: url("./InShot_20251119_155422114.jpg") center/cover no-repeat;
-      min-height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #fff;
-    }
+    .stagger{--i:0;transition-delay:calc(.06s * var(--i))}
 
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.35);
-    }
+    /* Hero headline subtle zoom */
+    .hero-page::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.12));pointer-events:none}
+    .hero-content .pulse{display:inline-block;animation:softPulse 3.6s ease-in-out infinite}
+    @keyframes softPulse{0%{transform:scale(1)}50%{transform:scale(1.02)}100%{transform:scale(1)}}
 
-    .hero-content h2 {
-      font-size: 3rem;
-      letter-spacing: 2px;
-    }
+    /* small card shadow */
+    .card-soft{background:rgba(255,255,255,0.8);box-shadow:0 6px 20px rgba(38,30,21,0.06);border-radius:14px;padding:1.25rem}
 
-    /* Sections */
-    section {
-      padding: 5rem 0;
+    /* media queries */
+    @media (max-width:991px){
+      .navbar{padding:0.5rem 1rem}
+      .hero-page{min-height:68vh}
+      .hero{min-height:48vh}
+      section{padding:3rem 0}
     }
-
-    .story {
-      background-color: var(--cream);
-    }
-
-    .gallery img {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 1.5rem;
-      transition: transform 0.3s ease;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.03);
-    }
-
-    .details {
-      background-color: #fffaf7;
-    }
-
-    /* Footer */
-    footer {
-      background-color: var(--cream);
-      padding: 2rem 0;
-      text-align: center;
-      color: #6c5a4d;
-      font-size: 0.9rem;
-    }
-
-    /* Animation */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.8s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 768px) {
-      .hero-content h1 { font-size: 2.2rem; }
-      .hero-content h2 { font-size: 2rem; }
+    @media (max-width:576px){
+      .hero-page{background-position:top}
+      .hero-content{padding:1rem}
+      .hero-content h1{letter-spacing:1px}
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-      <a class="navbar-brand fw-bold text-uppercase" href="#">Rijas <i class="fa-solid fa-heart" style="color: #ec0909;"></i> Rinu</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-        <span class="navbar-toggler-icon"></span>
+      <a class="navbar-brand" href="#">Rijas <i class="fa-solid fa-heart" style="color:#ec0909;margin-left:6px"></i> Rinu</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><span></span></span>
       </button>
+
       <div class="collapse navbar-collapse justify-content-end" id="navMenu">
         <ul class="navbar-nav">
           <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
@@ -194,92 +142,123 @@
     </div>
   </nav>
 
-  <!-- Hero Cover Page -->
-  <section class="hero-page">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1 class="fw-bold">The Wedding of<br>Rijas & Rinu</h1>
+  <!-- HERO COVER -->
+  <section class="hero-page" aria-label="Wedding cover">
+    <div class="overlay"></div>
+    <div class="hero-content text-center fade-up" style="--i:0">
+      <h1 class="fw-bold">The Wedding of<br><span class="pulse">Rijas &amp; Rinu</span></h1>
       <p class="mt-3">December 1, 2025 • Maharajas Auditorium, Nilambur</p>
+      <!-- <div class="mt-4 card-soft d-inline-block">
+        <a class="btn btn-sm btn-outline-dark" href="#details">See Details</a>
+      </div> -->
     </div>
-    <a href="#home" class="scroll-down">▼ Scroll Down</a>
+    <a href="#home" class="scroll-down">▼</a>
   </section>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero d-flex align-items-center justify-content-center">
-    <div class="hero-overlay"></div>
-    <div class="hero-content text-white fade-in">
-      <h2  class="fw-bold">Together Forever</h2>
+  <!-- MAIN HERO -->
+  <section id="home" class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content text-white text-center fade-up" style="--i:1">
+      <h2 class="fw-bold ">Together Forever</h2>
       <p class="lead">A celebration of love, laughter, and the promise of forever.</p>
     </div>
   </section>
 
-  <!-- Our Story -->
-  <div id="story" class="story">
-    <div class="container fade-in">
+  <!-- OUR STORY -->
+  <section id="story" class="story">
+    <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-8 text-center">
-          <h2 style="color: brown;" class="mb-4">Our Story</h2>
-          <p class="lead">
-            It began with a glance and grew into a lifetime of love.
-            Through laughter, little adventures, and quiet moments, Rinu and Rijas found
-            their forever in each other. Now, they invite you to join in their celebration of love,
-            friendship, and togetherness as they begin this new chapter.
-          </p>
+        <div class="col-lg-8 text-center fade-up" style="--i:2 color:;">
+          <h2  class="mb-4" style="color: red;">Our Story</h2>
+          <p class="lead" style="color: #a66b3a;">It began with a glance and grew into a lifetime of love. Through laughter, little adventures, and quiet moments, Rinu and Rijas found their forever in each other. Now, they invite you to join in their celebration of love, friendship, and togetherness as they begin this new chapter.</p>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Gallery -->
-  <div id="gallery" class="gallery">
+  <!-- GALLERY -->
+  <section id="gallery" class="gallery">
     <div class="container">
-      <h2 class="text-center mb-5 fade-in">Gallery</h2>
-      <div class="row g-4">
-        <div class="col-md-4 fade-in"><img src="./IMG-20251112-WA0683.jpg" alt="photo1"></div>
-        <div class="col-md-4 fade-in"><img src="./Screenshot_20251119_154530_Instagram.jpg" alt="photo2"></div>
-        <div class="col-md-4 fade-in"><img src="./Screenshot_20251119_154734_Instagram.jpg" alt="photo3"></div>
-        <div class="col-md-4 fade-in"><img src="./IMG-20251112-WA0685(1).jpg" alt="photo3"></div>
-        
+      <h2 class="text-center mb-5 fade-up"  style="color: #ec0909;" >Gallery</h2>
+      <div class="row g-3">
+        <div class="col-sm-6 col-md-4 fade-up" style="--i:4">
+          <div class="img-wrap"><img src="./IMG-20251112-WA0683.jpg" alt="Riju and Rinu photo 1" loading="lazy"></div>
+        </div>
+        <div class="col-sm-6 col-md-4 fade-up" style="--i:5">
+          <div class="img-wrap"><img src="./Screenshot_20251119_154530_Instagram.jpg" alt="Riju and Rinu photo 2" loading="lazy"></div>
+        </div>
+        <div class="col-sm-6 col-md-4 fade-up" style="--i:6">
+          <div class="img-wrap"><img src="./Screenshot_20251119_154734_Instagram.jpg" alt="Riju and Rinu photo 3" loading="lazy"></div>
+        </div>
+        <div class="col-sm-6 col-md-4 fade-up" style="--i:7">
+          <div class="img-wrap"><img src="./IMG-20251112-WA0685(1).jpg" alt="Riju and Rinu photo 4" loading="lazy"></div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Details -->
-  <div id="details" class="details">
-    <div class="container fade-in">
+  <!-- DETAILS -->
+  <section id="details" class="details">
+    <div class="container">
       <div class="row justify-content-center text-center">
-        <div class="col-lg-8">
-          <h2 style="color: brown;" class="mb-4">The Wedding Details</h2>
-          <p><strong>Date:</strong> December 1, 2025</p>
+        <div class="col-lg-8 fade-up" style="--i:8">
+          <h2 style="color:var(--accent)" class="mb-4">The Wedding Details</h2>
+          <div style="color: #6c5a4d;"><p><strong>Date:</strong> December 1, 2025</p>
           <p><strong>Time:</strong> 10:00 AM</p>
-          <p><strong>Venue:</strong> Maharajas Auditorium, Nilambur</p>
+          <p><strong>Venue:</strong> Maharajas Auditorium, Nilambur</p></div>
+
+          <div class="map-responsive mt-3">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.2394971598446!2d76.24624767489023!3d11.283387888897867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba63b5c9c34ad87%3A0x25874d6f7311b0fb!2sMaharaja%20Convention%20Centre!5e1!3m2!1sen!2sin!4v1764176283421!5m2!1sen!2sin" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Map to Maharaja Convention Centre"></iframe>
+          </div>
+
           <p class="mt-4 fst-italic text-muted">"We can’t wait to celebrate this beautiful day with our family and friends."</p>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>With Love, <strong>Rijas & Rinu</strong></p>
+      <p>With Love, <strong>Rijas &amp; Rinu</strong></p>
       <p class="mb-0">© 2025 Wedding Celebration</p>
     </div>
   </footer>
 
-  <!-- Bootstrap JS -->
+  <!-- SCRIPTS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Fade-in Animation JS -->
   <script>
-    const fadeEls = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, {threshold: 0.2});
-    fadeEls.forEach(el => observer.observe(el));
-  </script>
+    // add scrolled class to navbar on scroll
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll',()=>{
+      if(window.scrollY>20) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled');
+    });
 
+    // IntersectionObserver for reveal with staggered delays
+    const els = document.querySelectorAll('.fade-up');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const el = entry.target;
+          const i = parseInt(getComputedStyle(el).getPropertyValue('--i')) || 0;
+          el.style.transitionDelay = (i * 70) + 'ms';
+          el.classList.add('visible');
+          io.unobserve(el);
+        }
+      });
+    },{threshold:0.18});
+    els.forEach(el=>io.observe(el));
+
+    // Smooth scroll for anchor links (improved behavior across browsers)
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target){
+          e.preventDefault();
+          target.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      });
+    });
+  </script>
 </body>
 </html>
